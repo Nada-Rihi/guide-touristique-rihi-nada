@@ -17,14 +17,14 @@ public class LlmClientForGuideTouristique {
         String cle = System.getenv("GEMINI_KEY"); // même variable que dans le TP 2
         ChatModel modele = GoogleAiGeminiChatModel.builder()
                 .apiKey(cle)
-                .modelName("gemini-3.8-flash")
+                .modelName("gemini-3.5-flash-lite")
                 .responseFormat(ResponseFormat.JSON)
                 .maxRetries(5)
                 .build();
         guide = AiServices.create(GuideTouristique.class, modele);
     }
 
-    public String ask(String lieu) {
-        return guide.ask(lieu);
+    public String ask(String lieu, int nb) {
+        return guide.ask(lieu, nb);
     }
 }
